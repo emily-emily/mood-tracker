@@ -3,7 +3,7 @@ import src.server as server
 
 def newEntry():
   entry = {
-    "date": time.time(),
+    "date": int(time.time()),
     "mood": 0,
     "statuses": [],
     "activities": []
@@ -26,7 +26,7 @@ def newEntry():
   # input status data
   entry["mood"] = getStatus("mood")
   for s in statuses:
-    entry[s] = getStatus(s)
+    entry["statuses"].append({ "name": s, "value": getStatus(s) })
 
   # input activities
   print("Enter activities (return empty activity to finish):")
