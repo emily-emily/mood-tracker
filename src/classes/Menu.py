@@ -19,7 +19,8 @@ class Menu:
       else:
         print("Please enter a valid command.")
     
-    self.runCommand(command)
+    if self.runCommand(command):
+      self.enter()
   
   def listCommands(self):
     print("Actions:")
