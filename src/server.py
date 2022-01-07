@@ -29,11 +29,22 @@ def saveEntry(entry):
   else:
     print("Entry successfully created.")
 
-def getLastEntry():
-  res = requests.get(url=config["server_url"] + "/stats/lastEntry")
+def getLastEntryDate():
+  res = requests.get(url=config["server_url"] + "/stats/lastEntryDate")
   if not res.ok:
     printError(res)
   else:
-    return parser.parse(res.json()).strftime("%A %B %d, %Y %I:%M%p")
+    return parser.parse(res.json())
 
-print("last entry:", getLastEntry())
+def getLastActivityOccurrrence(activity):
+  res = requests.get(url=config["server_url"] + "/stats/lastActivityOccurrence", json={ "activity": activity })
+  if not res.ok:
+    printError(res)
+  else:
+    return parser.parse(res.json())
+
+try:
+  print("Last entry:", getLastEntryDate().strftime("%A %B %d, %Y %I:%M%p"))
+except Exception as e:
+  print("Couldn't connect to server.")
+  quit()

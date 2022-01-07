@@ -1,7 +1,7 @@
 import time
 import src.server as server
 
-def newEntry():
+def newEntry(prevCommand):
   entry = {
     "date": int(time.time()),
     "mood": 0,
@@ -56,7 +56,6 @@ def newEntry():
     
   # send to server
   server.saveEntry(entry)
-  return True
 
 def getStatus(name):
   print(name + ":")
