@@ -1,3 +1,8 @@
-import src.mainMenu as main
+import src.login
+import sys
 
-main.mainMenu.enter()
+try:
+  src.login.login()
+except KeyboardInterrupt:
+  print("Program exited.")
+  sys.exit(0)
