@@ -53,6 +53,13 @@ def getLastActivityOccurrrence(activity):
   else:
     return parser.parse(res.json())
 
+def getPlotData(status):
+  res = requests.get(url=config["server_url"] + "/stats/plotData", headers={ "authorization": src.auth.token }, json={ "status": status })
+  if not res.ok:
+    printError(res)
+  else:
+    return res.json()
+
 # try:
 #   print("Last entry:", getLastEntryDate().strftime("%A %B %d, %Y %I:%M%p"))
 # except Exception as e:
