@@ -11,16 +11,20 @@ def newEntry(prevCommand):
 
   # fetch statuses from server
   statuses = list(map(lambda x: x["name"], server.getStatuses()))
-  if not statuses:
+  if not isinstance(statuses, list):
     print("Could not get statuses from server.")
     return
+  elif not statuses:
+    print("No statuses found.")
   print("statuses:", statuses)
 
   # fetch activities from server
   activities = list(map(lambda x: x["name"], server.getActivities()))
-  if not activities:
+  if not isinstance(activities, list):
     print("Could not get activities from server.")
     return
+  elif not activities:
+    print("No statuses found.")
   print("activities:", activities)
 
   # input status data
